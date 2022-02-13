@@ -1,0 +1,13 @@
+<h1> List of tasks  </h1>
+
+<% @tasks.each do |task|  %>
+
+  <%= form_for(task, remote: true,authenticity_token: true) do |f| %>
+      <%= f.check_box :completed, onchange: "this.form.submit();" %>
+      <%= link_to task.title, task_path(task) %>
+  <% end %>
+
+<% end %>
+
+
+<%= link_to "Create task", task_new_path %>
